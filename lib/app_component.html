@@ -1,10 +1,13 @@
 <h1>Lottery</h1>
+<p>Day: {{ day }}</p>
 <p>Cash: ${{ cash }}</p>
-<material-button #betOnce raised (trigger)="bet()" [disabled]="cash <= 0">Bet ${{defaultBet}} once</material-button>
+<p>Alt Cash: ${{ altCash }}</p>
+
 
 <hr>
 
-<material-fab raised (trigger)="play()">
+<material-fab raised (trigger)="play()"
+        [disabled]="endOfDays">
     <glyph icon="play_arrow"></glyph>
 </material-fab>
 
@@ -12,10 +15,13 @@
     <glyph icon="pause"></glyph>
 </material-fab>
 
-<material-fab mini raised>
+<material-fab mini raised (trigger)="reset()">
     <glyph icon="replay"></glyph>
 </material-fab>
 
+<br>
+
+<material-button #betOnce (trigger)="bet()" [disabled]="notEnoughMoney">Bet ${{defaultBet}} once</material-button>
 
 <ul>
     <li *ngFor="let ticket of latestTickets; trackBy:trackByTickets">
