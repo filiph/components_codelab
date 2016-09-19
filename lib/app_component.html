@@ -1,0 +1,28 @@
+<h1>Lottery</h1>
+<p>Cash: ${{ cash }}</p>
+<material-button #betOnce raised (trigger)="bet()" [disabled]="cash <= 0">Bet ${{defaultBet}} once</material-button>
+
+<hr>
+
+<material-fab raised (trigger)="play()">
+    <glyph icon="play_arrow"></glyph>
+</material-fab>
+
+<material-fab mini raised (trigger)="pause()">
+    <glyph icon="pause"></glyph>
+</material-fab>
+
+<material-fab mini raised>
+    <glyph icon="replay"></glyph>
+</material-fab>
+
+
+<ul>
+    <li *ngFor="let ticket of latestTickets; trackBy:trackByTickets">
+        ${{ ticket.value }}
+        <span [ngSwitch]="ticket.value">
+            <span *ngSwitchWhen="0">Lose</span>
+            <span *ngSwitchDefault>Win</span>
+        </span>
+    </li>
+</ul>

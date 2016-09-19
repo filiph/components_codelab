@@ -1,0 +1,12 @@
+// Copyright (c) 2016, Filip Hracek. All rights reserved. Use of this source code
+// is governed by a BSD-style license that can be found in the LICENSE file.
+
+import 'dart:math';
+import 'package:angular2/core.dart';
+import 'package:angular2/platform/browser.dart';
+
+import 'package:components_codelab/app_component.dart';
+
+main() {
+  bootstrap(AppComponent, [provide(Random, useValue: new Random())]);
+}
