@@ -1,7 +1,8 @@
 <material-expansionpanel-set>
     <material-expansionpanel name="Wallet"
                              secondaryText="Initial: ${{ settings.initialCash }}. Daily disposable income: ${{ settings.dailyDisposable }}."
-                             (save)="settingsUpdated()">
+                             (save)="settingsUpdated()"
+                             (cancel)="resetWallet()">
         <div>
             <h3>Initial cash</h3>
             <input #initial [value]="initialCash"
@@ -12,10 +13,29 @@
         </div>
     </material-expansionpanel>
     <material-expansionpanel name="Betting"
-                             secondaryText="Lottery: Powerball. Spend maximum: $2."
-                             (save)="settingsUpdated()">
+                             secondaryText="Lottery: {{ settings.lottery.shortName }}. Strategy: {{ settings.betCeiling.shortName }}."
+                             (save)="settingsUpdated()"
+                             (cancel)="resetBetting()">
         <div>
-            Me too! Don't mind me.
+            <h3>Lottery</h3>
+            <material-radio-group>
+                <material-radio *ngFor="let item of settings.lotteries"
+                                [checked]="item == lottery"
+                                (checkedChange)="lottery = $event ? item : lottery">
+                    {{ item.name }}
+                </material-radio>
+            </material-radio-group>
+            <p>{{ lottery.description }}</p>
+
+            <h3>Strategy</h3>
+            <material-radio-group>
+                <material-radio *ngFor="let item of settings.betCeilings"
+                                [checked]="item == betCeiling"
+                                (checkedChange)="betCeiling = $event ? item : betCeiling">
+                    {{ item.shortName }} ({{ item.name }})
+                </material-radio>
+            </material-radio-group>
+            <p>{{ betCeiling.description }}</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel name="Investing"

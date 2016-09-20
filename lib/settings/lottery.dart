@@ -3,11 +3,19 @@ import 'dart:math';
 import 'package:angular2/core.dart';
 
 abstract class Lottery {
+  String get shortName;
+  String get name;
+  String get description;
   int get ticketPrice;
   Ticket bet();
 }
 
 class SimpleLottery implements Lottery {
+  final String shortName = "SimpleLottery";
+  final String name = "Non-Existent Almost-Fair Non-Profit Lottery";
+  final String description = "This lottery is literally ‘too good to be true.’ "
+      "It will pay out more than half of its revenue as prizes.";
+
   final Random _random;
   final ticketPrice = 1;
 
@@ -26,6 +34,11 @@ class SimpleLottery implements Lottery {
 }
 
 class Powerball implements Lottery {
+  final String shortName = "Powerball";
+  final String name = "US Powerball";
+  final String description = "Powerball is one of the most popular American "
+      "lottery games.";
+
   final Random _random;
   final ticketPrice = 2;
   final jackpot = 40000000;
