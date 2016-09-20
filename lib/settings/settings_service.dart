@@ -12,7 +12,7 @@ class Settings {
 
   double interestRate = 0.01;
 
-  final int maxDays = (60 - 20) * 365;
+  final int maxDays = (10) * 365;
 
   Settings();
 }
