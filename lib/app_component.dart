@@ -8,7 +8,7 @@ import 'dart:math';
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
-import 'package:components_codelab/lottery_service/lottery_service.dart';
+import 'package:components_codelab/settings/lottery.dart';
 import 'package:components_codelab/settings/settings_service.dart';
 
 @Component(
@@ -22,10 +22,9 @@ import 'package:components_codelab/settings/settings_service.dart';
     NgSwitchDefault,
     NgFor
   ],
-  providers: const [materialBindings, SimpleLottery, Settings],
+  providers: const [materialBindings, Settings],
 )
 class AppComponent implements OnInit {
-  final SimpleLottery _lottery;
   final Settings _settings;
 
   Timer _pulse;
@@ -43,11 +42,13 @@ class AppComponent implements OnInit {
   /// bet and invest.
   int phase;
 
+  bool inProgress = false;
+
   Queue<Ticket> latestTickets = new Queue<Ticket>();
 
   final DateTime _today = new DateTime.now();
 
-  AppComponent(this._settings, this._lottery);
+  AppComponent(this._settings);
 
   String get currentDay {
     var date = _today.add(new Duration(days: day));
@@ -56,7 +57,7 @@ class AppComponent implements OnInit {
 
   bool get endOfDays => day >= _settings.maxDays;
 
-  bool get notEnoughMoney => cash < _lottery.ticketPrice;
+  bool get notEnoughMoney => cash < _settings.lottery.ticketPrice;
 
   String get outcomeDescription {
     if (cash == altCash) return "no difference";
@@ -74,13 +75,13 @@ class AppComponent implements OnInit {
   void bet() {
     if (notEnoughMoney) return;
     int maxBetValue = min(_settings.dailyMaxBet, cash);
-    while (maxBetValue >= _lottery.ticketPrice) {
-      cash -= _lottery.ticketPrice;
-      var ticket = _lottery.bet();
+    while (maxBetValue >= _settings.lottery.ticketPrice) {
+      cash -= _settings.lottery.ticketPrice;
+      var ticket = _settings.lottery.bet();
       cash += ticket.value;
       latestTickets.addLast(ticket);
       if (latestTickets.length > 10) latestTickets.removeFirst();
-      maxBetValue -= _lottery.ticketPrice;
+      maxBetValue -= _settings.lottery.ticketPrice;
     }
   }
 
@@ -90,11 +91,13 @@ class AppComponent implements OnInit {
   }
 
   void pause() {
-    _pulse.cancel();
+    _pulse?.cancel();
+    inProgress = false;
   }
 
   void play() {
-    _pulse = new Timer.periodic(const Duration(milliseconds: 100), step);
+    _pulse = new Timer.periodic(const Duration(milliseconds: 5), step);
+    inProgress = true;
   }
 
   void reset() {
@@ -103,6 +106,7 @@ class AppComponent implements OnInit {
     day = 0;
     phase = 0;
     latestTickets.clear();
+    pause();
   }
 
   /// Elapse one day.
