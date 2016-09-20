@@ -8,24 +8,32 @@ import 'dart:math';
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
+import 'package:components_codelab/info_section/info_section.dart';
+import 'package:components_codelab/scores/scores.dart';
+import 'package:components_codelab/settings/component/settings.dart';
 import 'package:components_codelab/settings/lottery.dart';
 import 'package:components_codelab/settings/settings_service.dart';
 
 @Component(
   selector: 'lottery-simulator',
-  styleUrls: const ['app_component.css'],
-  templateUrl: 'app_component.html',
+  styleUrls: const ['lottery_simulator.css'],
+  templateUrl: 'lottery_simulator.html',
   directives: const [
     materialDirectives,
     NgSwitch,
     NgSwitchWhen,
     NgSwitchDefault,
-    NgFor
+    NgFor,
+    ScoresComponent,
+    InfoSectionComponent,
+    SettingsComponent
   ],
   providers: const [materialBindings, Settings],
 )
 class AppComponent implements OnInit {
   final Settings _settings;
+
+  Settings get settings => _settings;
 
   Timer _pulse;
 
@@ -35,6 +43,9 @@ class AppComponent implements OnInit {
   int cash;
 
   int day;
+
+  static const _fastPulse = const Duration(milliseconds: 5);
+  static const _normalPulse = const Duration(milliseconds: 200);
 
   /// The phase of the day.
   ///
@@ -55,20 +66,24 @@ class AppComponent implements OnInit {
     return "${date.month}/${date.day}/${date.year}";
   }
 
+  bool _fastEnabled = false;
+
+  bool get fastEnabled => _fastEnabled;
+
+  set fastEnabled(bool value) {
+    _fastEnabled = value;
+    if (inProgress) _reconfigurePulse();
+  }
+
+  void _reconfigurePulse() {
+    _pulse?.cancel();
+    _pulse = new Timer.periodic(
+        _fastEnabled ? _fastPulse : _normalPulse, (_) => step());
+  }
+
   bool get endOfDays => day >= _settings.maxDays;
 
   bool get notEnoughMoney => cash < _settings.lottery.ticketPrice;
-
-  String get outcomeDescription {
-    if (cash == altCash) return "no difference";
-    double multiple = cash / altCash;
-    if (cash > altCash) {
-      int percentage = ((multiple - 1) * 100).round();
-      return "$percentage% better";
-    }
-    int percentage = ((1 - multiple) * 100).round();
-    return "$percentage% worse";
-  }
 
   int get progress => (day / _settings.maxDays * 100).round();
 
@@ -96,8 +111,8 @@ class AppComponent implements OnInit {
   }
 
   void play() {
-    _pulse = new Timer.periodic(const Duration(milliseconds: 5), step);
     inProgress = true;
+    _reconfigurePulse();
   }
 
   void reset() {
@@ -109,8 +124,15 @@ class AppComponent implements OnInit {
     pause();
   }
 
+  void updateFromSettings() {
+    if (day == 0 && phase == 0) {
+      cash = _settings.initialCash;
+      altCash = cash;
+    }
+  }
+
   /// Elapse one day.
-  void step(Timer _) {
+  void step() {
     if (endOfDays) {
       pause();
       return;

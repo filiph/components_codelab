@@ -1,0 +1,28 @@
+<material-expansionpanel-set>
+    <material-expansionpanel name="Wallet"
+                             secondaryText="Initial: ${{ settings.initialCash }}. Daily disposable income: ${{ settings.dailyDisposable }}."
+                             (save)="settingsUpdated()">
+        <div>
+            <h3>Initial cash</h3>
+            <input #initial [value]="initialCash"
+                   (keyup)="updateInitial(initial.value)">
+            <h3>Daily disposable income</h3>
+            <input #disposable [value]="dailyDisposable"
+                   (keyup)="updateDisposable(disposable.value)">
+        </div>
+    </material-expansionpanel>
+    <material-expansionpanel name="Betting"
+                             secondaryText="Lottery: Powerball. Spend maximum: $2."
+                             (save)="settingsUpdated()">
+        <div>
+            Me too! Don't mind me.
+        </div>
+    </material-expansionpanel>
+    <material-expansionpanel name="Investing"
+                             secondaryText="Interest rate: 1%"
+                             (save)="settingsUpdated()">
+        <div>
+            Me too! Don't mind me.
+        </div>
+    </material-expansionpanel>
+</material-expansionpanel-set>

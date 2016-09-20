@@ -1,0 +1,12 @@
+<acx-scorecard
+        label="Betting"
+        value="${{ cash }}"
+        description="{{ outcomeDescription }}"
+        changeType="{{ cash > altCash ? 'positive' : cash < altCash ? 'negative' : 'neutral' }}">
+</acx-scorecard>
+
+<acx-scorecard
+        label="Investing"
+        value="${{ altCash }}"
+        description="...">
+</acx-scorecard>
