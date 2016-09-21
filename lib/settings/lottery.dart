@@ -72,17 +72,17 @@ class SimpleLottery implements Lottery {
       "It will pay out more than half of its revenue as prizes.";
 
   final Random _random;
-  final ticketPrice = 1;
+  final ticketPrice = 2;
 
   SimpleLottery(this._random);
 
   Ticket bet() {
     double draw = _random.nextDouble();
     if (draw < 0.01) {
-      return new Ticket(50, Category.jackpot);
+      return new Ticket(100, Category.jackpot);
     }
     if (draw < 0.1) {
-      return new Ticket(5, Category.win);
+      return new Ticket(10, Category.win);
     }
     return new Ticket(0, Category.lose);
   }
