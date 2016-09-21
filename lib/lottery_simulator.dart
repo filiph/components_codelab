@@ -3,7 +3,6 @@
 
 import 'dart:async';
 import 'dart:collection';
-import 'dart:math';
 
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
@@ -24,6 +23,7 @@ import 'package:components_codelab/settings/settings_service.dart';
     NgSwitchWhen,
     NgSwitchDefault,
     NgFor,
+    NgIf,
     ScoresComponent,
     InfoSectionComponent,
     SettingsComponent
@@ -66,6 +66,12 @@ class AppComponent implements OnInit {
     return "${date.month}/${date.day}/${date.year}";
   }
 
+  /// A map that keeps track of how many occurrences of winning of a given
+  /// value there were.
+  ///
+  /// In other words, `winningsMap[value] = occurrencesCount`.
+  final Map<int, int> winningsMap = new Map<int, int>();
+
   bool _fastEnabled = false;
 
   bool get fastEnabled => _fastEnabled;
@@ -88,7 +94,6 @@ class AppComponent implements OnInit {
   int get progress => (day / _settings.maxDays * 100).round();
 
   void bet() {
-//    int maxBetValue = min(_settings.dailyMaxBet, cash);
     int bettedToday = 0;
     int wonToday = 0;
 
@@ -100,6 +105,8 @@ class AppComponent implements OnInit {
       var ticket = _settings.lottery.bet();
       cash += ticket.value;
       wonToday += ticket.value;
+      winningsMap.putIfAbsent(ticket.value, () => 0);
+      winningsMap[ticket.value] += 1;
       latestTickets.addLast(ticket);
       if (latestTickets.length > 10) latestTickets.removeFirst();
     }
@@ -126,6 +133,7 @@ class AppComponent implements OnInit {
     day = 0;
     phase = 0;
     latestTickets.clear();
+    winningsMap.clear();
     pause();
   }
 
