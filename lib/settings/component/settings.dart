@@ -4,8 +4,8 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
-import 'package:components_codelab/settings/settings_service.dart';
 import 'package:components_codelab/settings/lottery.dart';
+import 'package:components_codelab/settings/settings_service.dart';
 
 @Component(
   selector: 'settings-component',
@@ -21,6 +21,8 @@ import 'package:components_codelab/settings/lottery.dart';
   providers: const [materialBindings],
 )
 class SettingsComponent implements OnInit {
+  final interestRates = [0, 1, 3, 5, 10];
+
   @Output()
   EventEmitter<Null> settingsChanged = new EventEmitter<Null>();
 
@@ -28,7 +30,10 @@ class SettingsComponent implements OnInit {
   Settings settings;
 
   int initialCash;
+
   int dailyDisposable;
+
+  int interestRate = 1;
 
   Lottery lottery;
 
@@ -38,13 +43,30 @@ class SettingsComponent implements OnInit {
   ngOnInit() {
     resetWallet();
     resetBetting();
+    resetOther();
   }
+
+  void resetBetting() {
+    lottery = settings.lottery;
+    strategy = settings.strategy;
+  }
+
+  void resetWallet() {
+    initialCash = settings.initialCash;
+    dailyDisposable = settings.dailyDisposable;
+  }
+
+  void resetOther() {
+    interestRate = settings.interestRate;
+  }
+
 
   void settingsUpdated() {
     settings.initialCash = initialCash;
     settings.dailyDisposable = dailyDisposable;
     settings.lottery = lottery;
     settings.strategy = strategy;
+    settings.interestRate = interestRate;
     settingsChanged.add(null);
   }
 
@@ -54,15 +76,5 @@ class SettingsComponent implements OnInit {
 
   void updateInitial(String value) {
     initialCash = int.parse(value);
-  }
-
-  void resetWallet() {
-    initialCash = settings.initialCash;
-    dailyDisposable = settings.dailyDisposable;
-  }
-
-  void resetBetting() {
-    lottery = settings.lottery;
-    strategy = settings.strategy;
   }
 }

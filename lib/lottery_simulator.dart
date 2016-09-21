@@ -154,7 +154,7 @@ class AppComponent implements OnInit {
     bet();
 
     if (day % 365 == 0) {
-      double interest = altCash * _settings.interestRate;
+      double interest = altCash * (_settings.interestRate / 100);
       altCash += interest.floor();
       print("Interest: $interest");
     }

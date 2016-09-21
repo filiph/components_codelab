@@ -17,7 +17,7 @@ class Settings {
 
   Strategy strategy = Strategy._strategies.first;
 
-  double interestRate = 0.01;
+  int interestRate = 1;
 
   final int maxDays = (10) * 365;
 
