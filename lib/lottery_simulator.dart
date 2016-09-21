@@ -55,8 +55,6 @@ class AppComponent implements OnInit {
 
   bool inProgress = false;
 
-  Queue<Ticket> latestTickets = new Queue<Ticket>();
-
   final DateTime _today = new DateTime.now();
 
   AppComponent(this._settings);
@@ -107,8 +105,6 @@ class AppComponent implements OnInit {
       wonToday += ticket.value;
       winningsMap.putIfAbsent(ticket.value, () => 0);
       winningsMap[ticket.value] += 1;
-      latestTickets.addLast(ticket);
-      if (latestTickets.length > 10) latestTickets.removeFirst();
     }
   }
 
@@ -132,7 +128,6 @@ class AppComponent implements OnInit {
     altCash = cash;
     day = 0;
     phase = 0;
-    latestTickets.clear();
     winningsMap.clear();
     pause();
   }
@@ -168,12 +163,4 @@ class AppComponent implements OnInit {
     }
     phase = 0;
   }
-
-  /// This tells [NgFor] that tickets with same value are equivalent, so that
-  /// it doesn't rewrite DOM elements that would look the same before and after
-  /// updating.
-  ///
-  /// See:
-  /// https://angular.io/docs/dart/latest/guide/template-syntax.html#!#ngFor
-  int trackByTickets(int index, Ticket ticket) => ticket.value;
 }
