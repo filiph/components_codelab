@@ -2,35 +2,20 @@ import 'dart:math';
 
 import 'package:angular2/core.dart';
 
+enum Category { jackpot, win, lose }
+
 abstract class Lottery {
-  String get shortName;
-  String get name;
+  static final List<Lottery> lotteries = [
+    new Powerball(new Random()),
+    new SimpleLottery(new Random())
+  ];
+
   String get description;
+  String get name;
+  String get shortName;
   int get ticketPrice;
+
   Ticket bet();
-}
-
-class SimpleLottery implements Lottery {
-  final String shortName = "SimpleLottery";
-  final String name = "Non-Existent Almost-Fair Non-Profit Lottery";
-  final String description = "This lottery is literally ‘too good to be true.’ "
-      "It will pay out more than half of its revenue as prizes.";
-
-  final Random _random;
-  final ticketPrice = 1;
-
-  SimpleLottery(this._random);
-
-  Ticket bet() {
-    double draw = _random.nextDouble();
-    if (draw < 0.01) {
-      return new Ticket(50, Category.jackpot);
-    }
-    if (draw < 0.1) {
-      return new Ticket(5, Category.win);
-    }
-    return new Ticket(0, Category.lose);
-  }
 }
 
 class Powerball implements Lottery {
@@ -80,11 +65,32 @@ class Powerball implements Lottery {
   }
 }
 
+class SimpleLottery implements Lottery {
+  final String shortName = "SimpleLottery";
+  final String name = "Non-Existent Almost-Fair Non-Profit Lottery";
+  final String description = "This lottery is literally ‘too good to be true.’ "
+      "It will pay out more than half of its revenue as prizes.";
+
+  final Random _random;
+  final ticketPrice = 1;
+
+  SimpleLottery(this._random);
+
+  Ticket bet() {
+    double draw = _random.nextDouble();
+    if (draw < 0.01) {
+      return new Ticket(50, Category.jackpot);
+    }
+    if (draw < 0.1) {
+      return new Ticket(5, Category.win);
+    }
+    return new Ticket(0, Category.lose);
+  }
+}
+
 class Ticket {
   final int value;
   final Category category;
 
   Ticket(this.value, this.category);
 }
-
-enum Category { jackpot, win, lose }

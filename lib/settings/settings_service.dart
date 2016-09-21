@@ -6,10 +6,7 @@ import 'lottery.dart';
 
 @Injectable()
 class Settings {
-  static final List<Lottery> _lotteries = [
-    new Powerball(new Random()),
-    new SimpleLottery(new Random())
-  ];
+
 
   int initialCash = 20;
 
@@ -24,11 +21,11 @@ class Settings {
 
   final int maxDays = (10) * 365;
 
-  Lottery lottery = _lotteries.first;
+  Lottery lottery = Lottery.lotteries.first;
 
   Settings();
 
-  List<Lottery> get lotteries => _lotteries;
+  List<Lottery> get lotteries => Lottery.lotteries;
 
   List<Strategy> get strategies => Strategy._strategies;
 }
