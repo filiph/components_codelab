@@ -2,7 +2,6 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:collection';
 
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
@@ -10,8 +9,8 @@ import 'package:angular2_components/angular2_components.dart';
 import 'package:components_codelab/info_section/info_section.dart';
 import 'package:components_codelab/scores/scores.dart';
 import 'package:components_codelab/settings/component/settings.dart';
-import 'package:components_codelab/settings/lottery.dart';
 import 'package:components_codelab/settings/settings_service.dart';
+import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
 
 @Component(
   selector: 'lottery-simulator',
@@ -26,6 +25,7 @@ import 'package:components_codelab/settings/settings_service.dart';
     NgIf,
     ScoresComponent,
     InfoSectionComponent,
+    VisualizeWinningsComponent,
     SettingsComponent
   ],
   providers: const [materialBindings, Settings],
@@ -43,6 +43,9 @@ class AppComponent implements OnInit {
   int cash;
 
   int day;
+
+  @ViewChild('vis')
+  VisualizeWinningsComponent vis;
 
   static const _fastPulse = const Duration(milliseconds: 5);
   static const _normalPulse = const Duration(milliseconds: 200);
@@ -103,6 +106,15 @@ class AppComponent implements OnInit {
       var ticket = _settings.lottery.bet();
       cash += ticket.value;
       wonToday += ticket.value;
+
+      // Visualize the result.
+      if (ticket.value == 0) {
+        vis.visualizeLoss();
+      } else if (ticket.value < settings.dailyDisposable * 50) {
+        vis.visualizeWin();
+      } else {
+        vis.visualizeBigWin();
+      }
       winningsMap.putIfAbsent(ticket.value, () => 0);
       winningsMap[ticket.value] += 1;
     }
@@ -129,6 +141,7 @@ class AppComponent implements OnInit {
     day = 0;
     phase = 0;
     winningsMap.clear();
+    vis.reset();
     pause();
   }
 
