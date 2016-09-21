@@ -13,7 +13,7 @@
         </div>
     </material-expansionpanel>
     <material-expansionpanel name="Betting"
-                             secondaryText="Lottery: {{ settings.lottery.shortName }}. Strategy: {{ settings.betCeiling.shortName }}."
+                             secondaryText="Lottery: {{ settings.lottery.shortName }}. Strategy: {{ settings.strategy.shortName }}."
                              (save)="settingsUpdated()"
                              (cancel)="resetBetting()">
         <div>
@@ -29,13 +29,13 @@
 
             <h3>Strategy</h3>
             <material-radio-group>
-                <material-radio *ngFor="let item of settings.betCeilings"
-                                [checked]="item == betCeiling"
-                                (checkedChange)="betCeiling = $event ? item : betCeiling">
+                <material-radio *ngFor="let item of settings.strategies"
+                                [checked]="item == strategy"
+                                (checkedChange)="strategy = $event ? item : strategy">
                     {{ item.shortName }} ({{ item.name }})
                 </material-radio>
             </material-radio-group>
-            <p>{{ betCeiling.description }}</p>
+            <p>{{ strategy.description }}</p>
         </div>
     </material-expansionpanel>
     <material-expansionpanel name="Investing"

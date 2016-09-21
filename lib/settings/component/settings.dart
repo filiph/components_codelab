@@ -1,7 +1,6 @@
 // Copyright (c) 2016, Filip Hracek. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-import 'dart:math';
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
@@ -33,7 +32,7 @@ class SettingsComponent implements OnInit {
 
   Lottery lottery;
 
-  BetCeiling betCeiling;
+  Strategy strategy;
 
   @override
   ngOnInit() {
@@ -45,7 +44,7 @@ class SettingsComponent implements OnInit {
     settings.initialCash = initialCash;
     settings.dailyDisposable = dailyDisposable;
     settings.lottery = lottery;
-    settings.betCeiling = betCeiling;
+    settings.strategy = strategy;
     settingsChanged.add(null);
   }
 
@@ -64,6 +63,6 @@ class SettingsComponent implements OnInit {
 
   void resetBetting() {
     lottery = settings.lottery;
-    betCeiling = settings.betCeiling;
+    strategy = settings.strategy;
   }
 }

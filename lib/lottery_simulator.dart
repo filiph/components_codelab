@@ -88,15 +88,20 @@ class AppComponent implements OnInit {
   int get progress => (day / _settings.maxDays * 100).round();
 
   void bet() {
-    if (notEnoughMoney) return;
-    int maxBetValue = min(_settings.dailyMaxBet, cash);
-    while (maxBetValue >= _settings.lottery.ticketPrice) {
+//    int maxBetValue = min(_settings.dailyMaxBet, cash);
+    int bettedToday = 0;
+    int wonToday = 0;
+
+    while (!notEnoughMoney &&
+        settings.strategy
+            .canContinue(bettedToday, wonToday, settings.dailyDisposable)) {
       cash -= _settings.lottery.ticketPrice;
+      bettedToday += _settings.lottery.ticketPrice;
       var ticket = _settings.lottery.bet();
       cash += ticket.value;
+      wonToday += ticket.value;
       latestTickets.addLast(ticket);
       if (latestTickets.length > 10) latestTickets.removeFirst();
-      maxBetValue -= _settings.lottery.ticketPrice;
     }
   }
 
