@@ -1,8 +1,6 @@
-import 'dart:math';
-
 import 'package:angular2/core.dart';
 
-import 'lottery.dart';
+import 'package:components_codelab/lottery/lottery.dart';
 
 final DateTime _now = new DateTime.now();
 
@@ -13,7 +11,7 @@ class Settings {
   int initialCash = 20;
 
   /// The amount of cash that the player has on them each new day.
-  int dailyDisposable = 2; // TODO: use strategy
+  int dailyDisposable = 2;
 
   Strategy strategy = Strategy._strategies.first;
 

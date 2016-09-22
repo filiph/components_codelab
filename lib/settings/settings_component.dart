@@ -4,13 +4,13 @@
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
-import 'package:components_codelab/settings/lottery.dart';
+import 'package:components_codelab/lottery/lottery.dart';
 import 'package:components_codelab/settings/settings_service.dart';
 
 @Component(
   selector: 'settings-component',
-  styleUrls: const ['settings.css'],
-  templateUrl: 'settings.html',
+  styleUrls: const ['settings_component.css'],
+  templateUrl: 'settings_component.html',
   directives: const [
     MaterialExpansionPanel,
     MaterialExpansionPanelSet,

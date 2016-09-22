@@ -4,11 +4,10 @@
 import 'dart:async';
 
 import 'package:angular2/core.dart';
-import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
 import 'package:components_codelab/info_section/info_section.dart';
 import 'package:components_codelab/scores/scores.dart';
-import 'package:components_codelab/settings/component/settings.dart';
+import 'package:components_codelab/settings/settings_component.dart';
 import 'package:components_codelab/settings/settings_service.dart';
 import 'package:components_codelab/stats/stats.dart';
 import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
