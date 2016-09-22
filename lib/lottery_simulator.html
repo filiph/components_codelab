@@ -42,26 +42,9 @@
 
 <h3>Stats</h3>
 
-<ul>
-    <li *ngIf="winningsMap.isEmpty">
-        (none)
-    </li>
-    <li *ngFor="let key of winningsMap.keys">
-        <span *ngIf="key == 0">
-            Lost &mdash;
-            {{ winningsMap[key] }} time{{ winningsMap[key] > 1 ? 's' : '' }}.
-        </span>
-        <span *ngIf="key > 0">
-            Won ${{ key }} &mdash;
-            {{ winningsMap[key] }} time{{ winningsMap[key] > 1 ? 's' : '' }}.
-        </span>
+<stats-component [winningsMap]="winningsMap"></stats-component>
 
-    </li>
-</ul>
-
-<div>
-    <visualize-winnings #vis></visualize-winnings>
-</div>
+<visualize-winnings #vis></visualize-winnings>
 
 <h2>Settings</h2>
 

@@ -10,6 +10,7 @@ import 'package:components_codelab/info_section/info_section.dart';
 import 'package:components_codelab/scores/scores.dart';
 import 'package:components_codelab/settings/component/settings.dart';
 import 'package:components_codelab/settings/settings_service.dart';
+import 'package:components_codelab/stats/stats.dart';
 import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
 
 const _fastPulse = const Duration(milliseconds: 5);
@@ -22,13 +23,9 @@ const _normalPulse = const Duration(milliseconds: 200);
   templateUrl: 'lottery_simulator.html',
   directives: const [
     materialDirectives,
-    NgSwitch,
-    NgSwitchWhen,
-    NgSwitchDefault,
-    NgFor,
-    NgIf,
     ScoresComponent,
     InfoSectionComponent,
+    StatsComponent,
     VisualizeWinningsComponent,
     SettingsComponent
   ],
