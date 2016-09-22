@@ -12,6 +12,7 @@ import 'package:components_codelab/settings/component/settings.dart';
 import 'package:components_codelab/settings/settings_service.dart';
 import 'package:components_codelab/stats/stats.dart';
 import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
+import 'package:intl/intl.dart';
 
 const _fastPulse = const Duration(milliseconds: 5);
 
@@ -54,8 +55,6 @@ class AppComponent implements OnInit {
 
   bool inProgress = false;
 
-  final DateTime _today = new DateTime.now();
-
   /// A map that keeps track of how many occurrences of winning of a given
   /// value there were.
   ///
@@ -66,9 +65,11 @@ class AppComponent implements OnInit {
 
   AppComponent(this._settings);
 
+  final _dateFormat = new DateFormat.yMMMMd();
+
   String get currentDay {
-    var date = _today.add(new Duration(days: day));
-    return "${date.month}/${date.day}/${date.year}";
+    var date = settings.now.add(new Duration(days: day));
+    return _dateFormat.format(date);
   }
 
   bool get endOfDays => day >= _settings.maxDays;

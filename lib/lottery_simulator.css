@@ -6,3 +6,16 @@ h2 {
     margin-top: 3em;
     margin-bottom: 1em;
 }
+
+.days__start-day {
+    float: left;
+}
+
+.days__end-day {
+    float: right;
+    text-align: right;
+}
+
+.days__clear {
+    clear: both;
+}

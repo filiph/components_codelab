@@ -2,14 +2,20 @@
 
 <info-section></info-section>
 
-<h2>Simulation</h2>
-
 <scores-component [(cash)]="cash" [(altCash)]="altCash"></scores-component>
 
-<br>
+<div class="days">
+    <div class="days__start-day">
+        <span>{{ currentDay }}</span>
+    </div>
+    <div class="days__end-day">
+        <span>{{ settings.years }} years from now</span>
+    </div>
+    <div class="days__clear"></div>
+</div>
 
-<p>{{ currentDay }}</p>
-<material-progress [(activeProgress)]="progress"></material-progress>
+<material-progress [(activeProgress)]="progress"
+                   class="life-progress"></material-progress>
 
 <div class="controls">
     <material-fab raised (trigger)="play()"
@@ -32,19 +38,15 @@
     </material-fab>
 </div>
 
-<material-toggle label="Go faster" [(checked)]="fastEnabled"></material-toggle>
-
-<br>
-
-
-
-<br>
+<material-toggle class="faster-button" label="Go faster"
+                 [(checked)]="fastEnabled"></material-toggle>
 
 <h3>Stats</h3>
 
-<stats-component [winningsMap]="winningsMap"></stats-component>
-
-<visualize-winnings #vis></visualize-winnings>
+<div class="stats">
+    <stats-component [winningsMap]="winningsMap"></stats-component>
+    <visualize-winnings #vis></visualize-winnings>
+</div>
 
 <h2>Settings</h2>
 

@@ -4,28 +4,35 @@ import 'package:angular2/core.dart';
 
 import 'lottery.dart';
 
+final DateTime _now = new DateTime.now();
+
+typedef bool Inhibitor(int bettedToday, int wonToday, int dailyDisposable);
+
 @Injectable()
 class Settings {
-
-
   int initialCash = 20;
 
   /// The amount of cash that the player has on them each new day.
   int dailyDisposable = 2; // TODO: use strategy
 
-  int dailyMaxBet = 2;
-
   Strategy strategy = Strategy._strategies.first;
 
   int interestRate = 1;
 
-  final int maxDays = (10) * 365;
+  int years = 3;
 
   Lottery lottery = Lottery.lotteries.first;
+
+  DateTime get now => _now;
 
   Settings();
 
   List<Lottery> get lotteries => Lottery.lotteries;
+
+  int get maxDays => new DateTime(
+          _now.year + years, _now.month, _now.day, _now.hour, _now.minute)
+      .difference(_now)
+      .inDays;
 
   List<Strategy> get strategies => Strategy._strategies;
 }
@@ -66,5 +73,3 @@ class Strategy {
 
   Strategy(this.shortName, this.name, this.description, this.canContinue);
 }
-
-typedef bool Inhibitor(int bettedToday, int wonToday, int dailyDisposable);
