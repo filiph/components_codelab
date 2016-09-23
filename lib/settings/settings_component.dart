@@ -5,7 +5,7 @@ import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives.dart';
 import 'package:angular2_components/angular2_components.dart';
 import 'package:components_codelab/lottery/lottery.dart';
-import 'package:components_codelab/settings/settings_service.dart';
+import 'package:components_codelab/settings/settings.dart';
 
 @Component(
   selector: 'settings-component',
@@ -21,7 +21,8 @@ import 'package:components_codelab/settings/settings_service.dart';
   providers: const [materialBindings],
 )
 class SettingsComponent implements OnInit {
-  final interestRates = [0, 1, 3, 5, 10];
+  final interestRateOptions = [0, 1, 3, 5, 10];
+  final yearsOptions = [1, 2, 3, 5, 10];
 
   @Output()
   EventEmitter<Null> settingsChanged = new EventEmitter<Null>();
@@ -33,7 +34,9 @@ class SettingsComponent implements OnInit {
 
   int dailyDisposable;
 
-  int interestRate = 1;
+  int interestRate;
+
+  int years;
 
   Lottery lottery;
 
@@ -58,6 +61,7 @@ class SettingsComponent implements OnInit {
 
   void resetOther() {
     interestRate = settings.interestRate;
+    years = settings.years;
   }
 
 
@@ -67,14 +71,23 @@ class SettingsComponent implements OnInit {
     settings.lottery = lottery;
     settings.strategy = strategy;
     settings.interestRate = interestRate;
+    settings.years = years;
     settingsChanged.add(null);
   }
 
   void updateDisposable(String value) {
-    dailyDisposable = int.parse(value);
+    try {
+      dailyDisposable = int.parse(value);
+    } on FormatException {
+      // Pass
+    }
   }
 
   void updateInitial(String value) {
-    initialCash = int.parse(value);
+    try {
+      initialCash = int.parse(value);
+    } on FormatException {
+      // Pass
+    }
   }
 }

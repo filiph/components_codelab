@@ -6,6 +6,10 @@
     clear: both;
 }
 
+h2 {
+    padding-top: 1em;
+}
+
 .scores-component {
     margin-top: 4em;
 }

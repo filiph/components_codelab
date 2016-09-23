@@ -22,7 +22,8 @@ class Powerball implements Lottery {
   final String shortName = "Powerball";
   final String name = "US Powerball";
   final String description = "Powerball is one of the most popular American "
-      "lottery games.";
+      "lottery games. Its chances of winning are well known and even published "
+      "on powerball.com.";
 
   final Random _random;
   final ticketPrice = 2;
@@ -66,10 +67,11 @@ class Powerball implements Lottery {
 }
 
 class SimpleLottery implements Lottery {
-  final String shortName = "SimpleLottery";
-  final String name = "Non-Existent Almost-Fair Non-Profit Lottery";
-  final String description = "This lottery is literally ‘too good to be true.’ "
-      "It will pay out more than half of its revenue as prizes.";
+  final String shortName = "Good Guy Lottery";
+  final String name = "Non-Existent Too-Good-To-Be-True Good Guy Lottery";
+  final String description = "This made-up lottery is literally ‘too good to "
+      "be true.’ It wouldn't be financially viable, as it pays out, "
+      "on average, almost all of its revenue in winnings.";
 
   final Random _random;
   final ticketPrice = 2;
