@@ -68,7 +68,7 @@ class Powerball implements Lottery {
 
 class SimpleLottery implements Lottery {
   final String shortName = "Good Guy Lottery";
-  final String name = "Non-Existent Too-Good-To-Be-True Good Guy Lottery";
+  final String name = "Mythical Good Guy Lottery";
   final String description = "This made-up lottery is literally ‘too good to "
       "be true.’ It wouldn't be financially viable, as it pays out, "
       "on average, almost all of its revenue in winnings.";
