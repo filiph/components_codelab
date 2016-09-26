@@ -5,7 +5,6 @@ import 'dart:async';
 
 import 'package:angular2/core.dart';
 import 'package:angular2_components/angular2_components.dart';
-import 'package:components_codelab/info_section/info_section.dart';
 import 'package:components_codelab/scores/scores.dart';
 import 'package:components_codelab/settings/settings_component.dart';
 import 'package:components_codelab/settings/settings.dart';
