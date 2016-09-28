@@ -1,3 +1,6 @@
 <div>
-    <canvas #canvas width="300" height="100"></canvas>
+    <canvas [style.display]="hasData ? 'block' : 'none'"
+            #canvas
+            width="300"
+            height="100"></canvas>
 </div>

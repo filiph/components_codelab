@@ -4,6 +4,7 @@
 import 'dart:html';
 
 import 'package:angular2/core.dart';
+import 'package:angular2/src/common/directives/ng_style.dart';
 import 'package:angular2_components/angular2_components.dart';
 
 enum Color {
@@ -14,7 +15,7 @@ enum Color {
   selector: 'visualize-winnings',
   styleUrls: const ['visualize_winnings.css'],
   templateUrl: 'visualize_winnings.html',
-  directives: const [materialDirectives],
+  directives: const [materialDirectives, NgStyle],
   providers: const [materialBindings],
 )
 class VisualizeWinningsComponent implements OnInit {
@@ -34,6 +35,10 @@ class VisualizeWinningsComponent implements OnInit {
   int _x = 0;
 
   int _y = 0;
+
+  bool _hasData = false;
+
+  bool get hasData => _hasData;
 
   void increaseCoordinates() {
     final pointSpace = _pointSize + _pointMargin;
@@ -72,11 +77,13 @@ class VisualizeWinningsComponent implements OnInit {
     _ctx.fillRect(_x, _y, _pointSize, _pointSize);
     _ctx.closePath();
     increaseCoordinates();
+    _hasData = true;
   }
 
   void reset() {
     _x = 0;
     _y = 0;
+    _hasData = false;
     _ctx?.clearRect(0, 0, _width, _height);
   }
 
