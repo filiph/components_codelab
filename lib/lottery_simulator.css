@@ -1,5 +1,10 @@
 :host {
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+:host h1, h2 {
+    font-weight: 500;
 }
 
 .clearfix {
@@ -45,4 +50,12 @@
 
 .history__vis {
     float: right;
+}
+
+#play-button {
+    background: #7fc34c;
+}
+
+#play-button.is-disabled {
+    background: #b0c79f;
 }

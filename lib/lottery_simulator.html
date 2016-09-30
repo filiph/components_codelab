@@ -1,6 +1,13 @@
 <h1>Lottery</h1>
 
-<material-toggle label="Dummy"></material-toggle>
+<div class="help">
+  <p>
+      Have you always wanted to lose all your money in a lottery?
+      This simulation makes it possible—without, you know, losing all your money.
+  </p>
+</div>
+
+<material-toggle label="Temporary workaround"></material-toggle>
 
 <material-tab-panel #tabPanel>
     <material-tab label="Simulation">
@@ -26,7 +33,8 @@
             <div class="controls">
                 <div class="controls__fabs">
                     <material-fab raised (trigger)="play()"
-                                  [disabled]="endOfDays || inProgress">
+                                  [disabled]="endOfDays || inProgress"
+                                  id="play-button">
                         <glyph icon="play_arrow"></glyph>
                     </material-fab>
 
@@ -65,20 +73,11 @@
             </settings-component>
         </div>
     </material-tab>
-    <material-tab label="Details">
-        <div>
-            <p>
-                A more in-depth (and longer) discussion of the tool, where the
-                probability data comes from, etc.
-            </p>
-        </div>
+    <material-tab label="Help">
+        <help-component content="help"></help-component>
     </material-tab>
-    <material-tab label="Technology">
-        <div>
-            <p>
-                How this came to be.
-            </p>
-        </div>
+    <material-tab label="About">
+        <help-component content="about"></help-component>
     </material-tab>
 </material-tab-panel>
 

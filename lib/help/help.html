@@ -1,0 +1,65 @@
+<div class="help" [ngSwitch]="content">
+    <div *ngSwitchWhen="'help'">
+        <p>
+            It's hard to explain what a spectacularly bad idea it is to bet in a lottery.
+            You have a better chance of being struck by lightning—twice—than winning the
+            Powerball lottery. But that doesn't stop people from trying.
+        </p>
+
+        <p>
+            Our approach is to let people see the results of betting on the lottery,
+            versus saving their disposable income.
+            It all happens much more quickly than in real life,
+            and you won't lose a cent.
+        </p>
+
+        <p>
+            Here's how the simulation works:
+        </p>
+
+        <ul>
+            <li> Each "day" has two phases. First you earn your disposable income ($2, by default).
+                Then you bet, immediately getting the results. </li>
+            <li> You can choose different <b>betting strategies</b> and even different <b>lotteries</b>.
+                We only simulate one <em>real</em> lottery, at the moment, but even the mythical
+                fair lottery is interesting. </li>
+            <li> You can also choose the <b>length of time</b> to simulate and the <b>interest rate</b>
+                for your invested money.</li>
+            <li> <b>Everything is completely random.</b>
+                It's perfectly possible for you to win the jackpot here,
+                but it's just as unlikely to happen as it is in real life. </li>
+        </ul>
+
+
+        <h2> Tips </h2>
+
+        <dl>
+            <dt> Simulation running too slowly? </dt>
+            <dd> Toggle <b>Go faster</b>. </dd>
+
+            <dt> Simulation running too quickly? </dt>
+            <dd> Click the pause button: <glyph icon="pause"></glyph><br>
+                Then click the step button to advance one phase (half a day):
+                <glyph icon="skip_next"></glyph> </dd>
+
+            <dt> Want to start all over? </dt>
+            <dd> Click the reset button: <glyph icon="replay"></glyph> </dd>
+        </dl>
+    </div>
+
+    <div *ngSwitchWhen="'about'">
+        <p>
+            Technology, data sources, why this demo exists...
+        </p>
+
+        <p> TO DO: </p>
+        <ol>
+            <li> Add the real content we want to this tab. </li>
+            <li> Add alt text to all the glyphs. </li>
+            <li> Add some artwork, better styles (but not too many), ... </li>
+        </ol>
+    </div>
+
+    <div *ngSwitchDefault> Uh oh. You've found a bug. No content available for {{content}}. </div>
+
+</div>

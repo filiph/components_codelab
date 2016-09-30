@@ -5,6 +5,7 @@ import 'dart:async';
 
 import 'package:angular2/core.dart';
 import 'package:angular2_components/angular2_components.dart';
+import 'package:components_codelab/help/help.dart';
 import 'package:components_codelab/scores/scores.dart';
 import 'package:components_codelab/settings/settings_component.dart';
 import 'package:components_codelab/settings/settings.dart';
@@ -22,6 +23,7 @@ const _normalPulse = const Duration(milliseconds: 200);
   templateUrl: 'lottery_simulator.html',
   directives: const [
     materialDirectives,
+    HelpComponent,
     ScoresComponent,
     StatsComponent,
     VisualizeWinningsComponent,
@@ -34,11 +36,13 @@ class AppComponent implements OnInit {
 
   Timer _pulse;
 
-  /// The state of cash the person would have if they saved instead of betting.
+  /// The amount of cash the person would have if they saved instead of betting.
   int altCash;
 
+  /// The amount of cash the bettor has.
   int cash;
 
+  /// The day of the simulation, starting at 0.
   int day;
 
   @ViewChild('vis')
