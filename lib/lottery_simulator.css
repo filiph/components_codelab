@@ -53,9 +53,10 @@
 }
 
 #play-button {
-  background: #7fc34c;
+  color: white;
+  background: #F44336;
 }
 
 #play-button.is-disabled {
-  background: #b0c79f;
+  background: #EF9A9A;
 }

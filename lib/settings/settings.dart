@@ -8,7 +8,7 @@ typedef bool Inhibitor(int bettedToday, int wonToday, int dailyDisposable);
 
 @Injectable()
 class Settings {
-  int initialCash = 20;
+  int initialCash = 10;
 
   /// The amount of cash that the player has on them each new day.
   int dailyDisposable = 2;

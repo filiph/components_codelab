@@ -12,8 +12,6 @@ dependencies:
   intl: ^0.14.0
 transformers:
 - angular2:
-    platform_directives:
-    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
     entry_points: web/main.dart
     resolved_identifiers:
       Random: 'dart:math'
