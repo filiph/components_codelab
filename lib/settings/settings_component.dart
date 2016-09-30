@@ -21,7 +21,12 @@ import 'package:components_codelab/settings/settings.dart';
   providers: const [materialBindings],
 )
 class SettingsComponent implements OnInit {
+  final initialCashOptions = [0, 10, 100, 1000];
+
+  final dailyDisposableOptions = [0, 2, 4, 10];
+
   final interestRateOptions = [0, 1, 3, 5, 10];
+
   final yearsOptions = [1, 2, 3, 5, 10];
 
   @Output()
@@ -73,21 +78,5 @@ class SettingsComponent implements OnInit {
     settings.interestRate = interestRate;
     settings.years = years;
     settingsChanged.add(null);
-  }
-
-  void updateDisposable(String value) {
-    try {
-      dailyDisposable = int.parse(value);
-    } on FormatException {
-      // Pass
-    }
-  }
-
-  void updateInitial(String value) {
-    try {
-      initialCash = int.parse(value);
-    } on FormatException {
-      // Pass
-    }
   }
 }

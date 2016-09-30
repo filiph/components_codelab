@@ -5,12 +5,22 @@
                              (cancel)="resetWallet()">
         <div>
             <h3>Initial cash</h3>
-            <input #initial [value]="initialCash"
-                   (keyup)="updateInitial(initial.value)">
+            <material-radio-group>
+                <material-radio *ngFor="let item of initialCashOptions"
+                                [checked]="item == initialCash"
+                                (checkedChange)="initialCash = $event ? item : initialCash">
+                    ${{ item }}
+                </material-radio>
+            </material-radio-group>
 
             <h3>Daily disposable income</h3>
-            <input #disposable [value]="dailyDisposable"
-                   (keyup)="updateDisposable(disposable.value)">
+            <material-radio-group>
+                <material-radio *ngFor="let item of dailyDisposableOptions"
+                                [checked]="item == dailyDisposable"
+                                (checkedChange)="dailyDisposable = $event ? item : dailyDisposable">
+                    ${{ item }}
+                </material-radio>
+            </material-radio-group>
         </div>
     </material-expansionpanel>
     <material-expansionpanel name="Betting"
