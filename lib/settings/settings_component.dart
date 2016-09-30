@@ -12,6 +12,7 @@ import 'package:components_codelab/settings/settings.dart';
   styleUrls: const ['settings_component.css'],
   templateUrl: 'settings_component.html',
   directives: const [
+    MaterialCheckboxComponent,
     MaterialExpansionPanel,
     MaterialExpansionPanelSet,
     MaterialRadioComponent,
@@ -25,7 +26,7 @@ class SettingsComponent implements OnInit {
 
   final dailyDisposableOptions = [0, 2, 4, 10];
 
-  final interestRateOptions = [0, 1, 3, 5, 10];
+  final interestRateOptions = [1, 3, 5, 10];
 
   final yearsOptions = [1, 2, 3, 5, 10];
 
@@ -38,6 +39,8 @@ class SettingsComponent implements OnInit {
   int initialCash;
 
   int dailyDisposable;
+
+  bool isInvesting = true;
 
   int interestRate;
 
@@ -65,7 +68,12 @@ class SettingsComponent implements OnInit {
   }
 
   void resetOther() {
-    interestRate = settings.interestRate;
+    if (settings.interestRate == 0) {
+      isInvesting = false;
+    } else {
+      isInvesting = true;
+      interestRate = settings.interestRate;
+    }
     years = settings.years;
   }
 
@@ -75,7 +83,7 @@ class SettingsComponent implements OnInit {
     settings.dailyDisposable = dailyDisposable;
     settings.lottery = lottery;
     settings.strategy = strategy;
-    settings.interestRate = interestRate;
+    settings.interestRate = isInvesting ? interestRate : 0;
     settings.years = years;
     settingsChanged.add(null);
   }
