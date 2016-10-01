@@ -7,8 +7,8 @@ import 'package:angular2/core.dart';
 import 'package:angular2_components/angular2_components.dart';
 import 'package:components_codelab/help/help.dart';
 import 'package:components_codelab/scores/scores.dart';
-import 'package:components_codelab/settings/settings_component.dart';
 import 'package:components_codelab/settings/settings.dart';
+import 'package:components_codelab/settings/settings_component.dart';
 import 'package:components_codelab/stats/stats.dart';
 import 'package:components_codelab/visualize_winnings/visualize_winnings.dart';
 import 'package:intl/intl.dart';
@@ -64,9 +64,9 @@ class AppComponent implements OnInit {
 
   bool _fastEnabled = false;
 
-  AppComponent(this._settings);
-
   final _dateFormat = new DateFormat.yMMMMd();
+
+  AppComponent(this._settings);
 
   String get currentDay {
     var date = settings.now.add(new Duration(days: day));
