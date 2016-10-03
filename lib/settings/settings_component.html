@@ -52,7 +52,8 @@
   </material-expansionpanel>
   <material-expansionpanel name="Other"
                            secondaryText="Interest rate: {{ settings.interestRate }}%. Years: {{ settings.years }}."
-                           (save)="settingsUpdated()">
+                           (save)="settingsUpdated()"
+                           (cancel)="resetOther()">
     <div>
       <h3>Annual interest rate</h3>
       <material-checkbox label="Investing" [(checked)]="isInvesting"></material-checkbox><br>
