@@ -14,7 +14,7 @@
     <div>
       <h2>Playing {{ settings.lottery.shortName }}</h2>
 
-      <scores-component [(cash)]="cash" [(altCash)]="altCash"
+      <scores-component [cash]="cash" [altCash]="altCash"
           class="scores-component"></scores-component>
 
       <div class="days">
@@ -27,7 +27,7 @@
         <div class="clearfix"></div>
       </div>
 
-      <material-progress [(activeProgress)]="progress"
+      <material-progress [activeProgress]="progress"
           class="life-progress"></material-progress>
 
       <div class="controls">
