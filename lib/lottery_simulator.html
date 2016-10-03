@@ -10,7 +10,7 @@
 <div>
   <h2>Playing {{ settings.lottery.shortName }}</h2>
 
-  <scores-component [(cash)]="cash" [(altCash)]="altCash"
+  <scores-component [cash]="cash" [altCash]="altCash"
       class="scores-component"></scores-component>
 
   <div class="days">
@@ -23,35 +23,37 @@
     <div class="clearfix"></div>
   </div>
 
-  <material-progress [activeProgress]="progress"
-      class="life-progress"></material-progress>
+  Progress: <strong>{{progress}}%</strong> <br>
+  <progress max="100" [value]="progress"></progress>
 
   <div class="controls">
     <div class="controls__fabs">
-      <material-fab raised (trigger)="play()"
-          [disabled]="endOfDays || inProgress"
-          id="play-button">
-        <glyph icon="play_arrow"></glyph>
-      </material-fab>
+      <button (click)="play()"
+              [disabled]="endOfDays || inProgress"
+              id="play-button">
+        Play
+      </button>
 
-      <material-fab mini raised (trigger)="step()"
-          [disabled]="endOfDays || inProgress">
-        <glyph icon="skip_next"></glyph>
-      </material-fab>
+      <button (click)="step()"
+              [disabled]="endOfDays || inProgress">
+        Step
+      </button>
 
-      <material-fab mini raised (trigger)="pause()"
-          [disabled]="!inProgress">
-        <glyph icon="pause"></glyph>
-      </material-fab>
+      <button (click)="pause()"
+              [disabled]="!inProgress">
+        Pause
+      </button>
 
-      <material-fab mini raised (trigger)="reset()">
-        <glyph icon="replay"></glyph>
-      </material-fab>
+      <button (click)="reset()">
+        Reset
+      </button>
     </div>
-    <material-toggle class="controls__faster-button"
-        label="Go faster"
-        [(checked)]="fastEnabled"></material-toggle>
-    <div class="clearfix"></div>
+    <div class="controls__faster-button">
+      <label>
+        <input #fastCheckbox type="checkbox" (change)="fastEnabled = fastCheckbox.checked">
+        Go faster
+      </label>
+    </div>
   </div>
 
   <div class="history">
