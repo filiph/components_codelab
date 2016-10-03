@@ -4,7 +4,6 @@
 import 'dart:async';
 
 import 'package:angular2/core.dart';
-import 'package:angular2_components/angular2_components.dart';
 import 'package:components_codelab/help/help.dart';
 import 'package:components_codelab/scores/scores.dart';
 import 'package:components_codelab/settings/settings.dart';
@@ -22,14 +21,13 @@ const _normalPulse = const Duration(milliseconds: 200);
   styleUrls: const ['lottery_simulator.css'],
   templateUrl: 'lottery_simulator.html',
   directives: const [
-    materialDirectives,
     HelpComponent,
     ScoresComponent,
     StatsComponent,
     VisualizeWinningsComponent,
     SettingsComponent
   ],
-  providers: const [materialBindings, Settings],
+  providers: const [Settings],
 )
 class AppComponent implements OnInit {
   final Settings _settings;
