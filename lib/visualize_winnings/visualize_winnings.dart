@@ -5,7 +5,6 @@ import 'dart:html';
 
 import 'package:angular2/core.dart';
 import 'package:angular2/src/common/directives/ng_style.dart';
-import 'package:angular2_components/angular2_components.dart';
 
 enum Color {
   gray, green, gold
@@ -15,8 +14,7 @@ enum Color {
   selector: 'visualize-winnings',
   styleUrls: const ['visualize_winnings.css'],
   templateUrl: 'visualize_winnings.html',
-  directives: const [materialDirectives, NgStyle],
-  providers: const [materialBindings],
+  directives: const [NgStyle],
 )
 class VisualizeWinningsComponent implements OnInit {
   static const int _pointSize = 5;
