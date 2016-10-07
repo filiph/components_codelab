@@ -48,16 +48,49 @@
   </div>
 
   <div *ngSwitchWhen="'about'">
+
     <p>
-      Technology, data sources, why this demo exists...
+    Two facets of this app might interest you:
     </p>
 
-    <p> TO DO: </p>
-    <ol>
-      <li> Add the real content we want to this tab. </li>
-      <li> Add alt text to all the glyphs. </li>
-      <li> Add some artwork, better styles (but not too many), ... </li>
-    </ol>
+    <ul>
+      <li> How the lottery results are calculated </li>
+      <li> How this app was coded </li>
+    </ul>
+
+    <h2> How the lottery results are calculated </h2>
+    <p>
+      This app uses simple probabilities from sources such as the
+      <a href="http://www.powerball.com/powerball/pb_prizes.asp">Powerball site</a>
+      to draw tickets. You can go much deeper using
+      <a href="https://en.wikipedia.org/wiki/Lottery_mathematics">lottery mathematics</a>.
+    </p>
+   
+    <h2> How this app was coded </h2>
+
+    <p>
+      <a href="https://github.com/filiph">FilipH</a>
+      wrote this app to accompany a code lab demonstrating
+      how to use an early release of AngularDart Components.
+      More information:
+    </p>
+
+    <dl>
+      <dt> <a href="http://www.dartlang.org">www.dartlang.org</a> </dt>
+      <dd> The Dart language and libraries. </dd>
+
+      <dt> <a href="http://webdev.dartlang.org">webdev.dartlang.org</a> </dt>
+      <dd> How to write web apps with Dart. Includes
+           <a href="https://webdev.dartlang.org/codelabs">code
+	       labs</a>—step-by-step introductions to writing Dart code for the web.
+      </dd>
+
+      <dt> <a href="http://angulardart.org">angulardart.org</a> </dt>
+      <dd> Detailed documentation for using AngularDart. </dd>
+    </dl>
+
+    <img src="img/angular-dart-love.svg" width="100%">
+      
   </div>
 
   <div *ngSwitchDefault> Uh oh. You've found a bug. No content available for {{content}}. </div>
