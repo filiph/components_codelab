@@ -27,7 +27,7 @@ const _normalPulse = const Duration(milliseconds: 200);
     ScoresComponent,
     StatsComponent,
     VisualizeWinningsComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   providers: const [materialBindings, Settings],
 )

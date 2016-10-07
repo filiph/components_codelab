@@ -10,7 +10,7 @@ import 'package:angular2_components/angular2_components.dart';
     NgSwitch,
     NgSwitchWhen,
     NgSwitchDefault,
-    materialDirectives
+    materialDirectives,
   ],
 )
 class HelpComponent {

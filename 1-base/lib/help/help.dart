@@ -8,8 +8,8 @@ import 'package:angular2/src/common/directives.dart';
   directives: const [
     NgSwitch,
     NgSwitchWhen,
-    NgSwitchDefault
-  ]
+    NgSwitchDefault,
+  ],
 )
 class HelpComponent {
   @Input()

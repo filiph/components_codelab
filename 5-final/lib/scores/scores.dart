@@ -8,9 +8,7 @@ import 'package:angular2_components/angular2_components.dart';
   selector: 'scores-component',
   styleUrls: const ['scores.css'],
   templateUrl: 'scores.html',
-  directives: const [
-    ScorecardComponent
-  ],
+  directives: const [ScorecardComponent],
   providers: const [materialBindings],
 )
 class ScoresComponent {

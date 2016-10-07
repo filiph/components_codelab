@@ -12,7 +12,7 @@ import 'package:components_codelab/settings/settings.dart';
   templateUrl: 'settings_component.html',
   directives: const [
     NgFor
-  ]
+  ],
 )
 class SettingsComponent implements OnInit {
   final initialCashOptions = [0, 10, 100, 1000];

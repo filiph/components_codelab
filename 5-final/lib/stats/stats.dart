@@ -8,7 +8,7 @@ import 'package:angular2/src/common/directives.dart';
   selector: 'stats-component',
   styleUrls: const ['stats.css'],
   templateUrl: 'stats.html',
-  directives: const [NgFor, NgIf]
+  directives: const [NgFor, NgIf],
 )
 class StatsComponent {
   @Input()
