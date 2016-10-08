@@ -28,33 +28,30 @@
 
   <div class="controls">
     <div class="controls__fabs">
-      <button (click)="play()"
+      <material-fab raised (trigger)="play()"
               [disabled]="endOfDays || inProgress"
               id="play-button">
         <glyph icon="play_arrow"></glyph>
-      </button>
+      </material-fab>
 
-      <button (click)="step()"
+      <material-fab mini raised (trigger)="step()"
               [disabled]="endOfDays || inProgress">
         <glyph icon="skip_next"></glyph>
-      </button>
+      </material-fab>
 
-      <button (click)="pause()"
+      <material-fab mini raised (trigger)="pause()"
               [disabled]="!inProgress">
         <glyph icon="pause"></glyph>
-      </button>
+      </material-fab>
 
-      <button (click)="reset()">
+      <material-fab mini raised (trigger)="reset()">
         <glyph icon="replay"></glyph>
-      </button>
+      </material-fab>
     </div>
-    <div class="controls__faster-button">
-      <label>
-        <input #fastCheckbox type="checkbox"
-               (change)="fastEnabled = fastCheckbox.checked">
-        Go faster
-      </label>
-    </div>
+    <material-toggle class="controls__faster-button"
+        label="Go faster"
+        [(checked)]="fastEnabled">
+    </material-toggle>
     <div class="clear-floats"></div>
   </div>
 
