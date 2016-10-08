@@ -25,24 +25,24 @@
         <div class="clear-floats"></div>
       </div>
 
-      <material-progress [activeProgress]="progress"
-          class="life-progress"></material-progress>
+      <material-progress  [activeProgress]="progress" class="life-progress">
+      </material-progress>
 
       <div class="controls">
         <div class="controls__fabs">
           <material-fab raised (trigger)="play()"
-              [disabled]="endOfDays || inProgress"
-              id="play-button">
+                  [disabled]="endOfDays || inProgress"
+                  id="play-button">
             <glyph icon="play_arrow"></glyph>
           </material-fab>
 
           <material-fab mini raised (trigger)="step()"
-              [disabled]="endOfDays || inProgress">
+                  [disabled]="endOfDays || inProgress">
             <glyph icon="skip_next"></glyph>
           </material-fab>
 
           <material-fab mini raised (trigger)="pause()"
-              [disabled]="!inProgress">
+                  [disabled]="!inProgress">
             <glyph icon="pause"></glyph>
           </material-fab>
 
@@ -52,7 +52,8 @@
         </div>
         <material-toggle class="controls__faster-button"
             label="Go faster"
-            [(checked)]="fastEnabled"></material-toggle>
+            [(checked)]="fastEnabled">
+        </material-toggle>
         <div class="clear-floats"></div>
       </div>
 
@@ -78,4 +79,3 @@
     <help-component content="about"></help-component>
   </material-tab>
 </material-tab-panel>
-
