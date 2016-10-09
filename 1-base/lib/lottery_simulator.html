@@ -29,18 +29,18 @@
   <div class="controls">
     <div class="controls__fabs">
       <button (click)="play()"
-              [disabled]="endOfDays || inProgress"
-              id="play-button">
+          [disabled]="endOfDays || inProgress"
+          id="play-button">
         Play
       </button>
 
       <button (click)="step()"
-              [disabled]="endOfDays || inProgress">
+          [disabled]="endOfDays || inProgress">
         Step
       </button>
 
       <button (click)="pause()"
-              [disabled]="!inProgress">
+          [disabled]="!inProgress">
         Pause
       </button>
 
@@ -51,7 +51,7 @@
     <div class="controls__faster-button">
       <label>
         <input #fastCheckbox type="checkbox"
-               (change)="fastEnabled = fastCheckbox.checked">
+            (change)="fastEnabled = fastCheckbox.checked">
         Go faster
       </label>
     </div>
