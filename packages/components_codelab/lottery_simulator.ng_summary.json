@@ -1,0 +1,189 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "dart:async",
+        "5": false
+      },
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2_components/angular2_components.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/help/help.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/scores/scores.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/settings/settings.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/settings/settings_component.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/stats/stats.dart",
+        "5": false
+      },
+      {
+        "1": "package:components_codelab/visualize_winnings/visualize_winnings.dart",
+        "5": false
+      },
+      {
+        "1": "package:intl/intl.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "AppComponent",
+        "5": [
+          {
+            "1": "Settings",
+            "4": "_settings"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ],
+        "7": [
+          {
+            "2": "materialDirectives"
+          },
+          {
+            "2": "HelpComponent"
+          },
+          {
+            "2": "ScoresComponent"
+          },
+          {
+            "2": "StatsComponent"
+          },
+          {
+            "2": "VisualizeWinningsComponent"
+          },
+          {
+            "2": "SettingsComponent"
+          }
+        ]
+      }
+    ],
+    "6": "lottery_simulator.dart"
+  },
+  "type": {
+    "_fastPulse": {
+      "class": "Identifier",
+      "name": "_fastPulse",
+      "moduleUrl": "asset:components_codelab/lib/lottery_simulator.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_normalPulse": {
+      "class": "Identifier",
+      "name": "_normalPulse",
+      "moduleUrl": "asset:components_codelab/lib/lottery_simulator.dart",
+      "prefix": null,
+      "value": null
+    },
+    "AppComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "lottery-simulator",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "AppComponent",
+        "moduleUrl": "asset:components_codelab/lib/lottery_simulator.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Settings",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": {
+        "encapsulation": 0,
+        "template": "<h1>Lottery Simulator</h1>\n\n<div class=\"help\">\n <p>\n   Have you always wanted to lose all your money in a lottery?\n   This simulation makes it possible—without, you know, losing all your money.\n </p>\n</div>\n\n<material-tab-panel>\n  <material-tab label=\"Simulation\">\n    <div>\n      <h2>Playing {{ settings.lottery.shortName }}</h2>\n\n      <scores-component [cash]=\"cash\" [altCash]=\"altCash\"\n          class=\"scores-component\"></scores-component>\n\n      <div class=\"days\">\n        <div class=\"days__start-day\">\n          <span>{{ currentDay }}</span>\n        </div>\n        <div class=\"days__end-day\">\n          <span>{{ settings.years }} years from now</span>\n        </div>\n        <div class=\"clear-floats\"></div>\n      </div>\n\n      <material-progress  [activeProgress]=\"progress\" class=\"life-progress\">\n      </material-progress>\n\n      <div class=\"controls\">\n        <div class=\"controls__fabs\">\n          <material-fab raised (trigger)=\"play()\"\n              [disabled]=\"endOfDays || inProgress\"\n              id=\"play-button\"\n              aria-label=\"Play\">\n            <glyph icon=\"play_arrow\"></glyph>\n          </material-fab>\n\n          <material-fab mini raised (trigger)=\"step()\"\n              [disabled]=\"endOfDays || inProgress\"\n              aria-label=\"Step\">\n            <glyph icon=\"skip_next\"></glyph>\n          </material-fab>\n\n          <material-fab mini raised (trigger)=\"pause()\"\n              [disabled]=\"!inProgress\"\n              aria-label=\"Pause\">\n            <glyph icon=\"pause\"></glyph>\n          </material-fab>\n\n          <material-fab mini raised (trigger)=\"reset()\"\n              aria-label=\"Reset\">\n            <glyph icon=\"replay\"></glyph>\n          </material-fab>\n        </div>\n        <material-toggle class=\"controls__faster-button\"\n            label=\"Go faster\"\n            [(checked)]=\"fastEnabled\">\n        </material-toggle>\n        <div class=\"clear-floats\"></div>\n      </div>\n\n      <div class=\"history\">\n        <stats-component [winningsMap]=\"winningsMap\"\n            class=\"history__stats\"></stats-component>\n        <visualize-winnings #vis\n            class=\"history__vis\"></visualize-winnings>\n        <div class=\"clear-floats\"></div>\n      </div>\n\n      <h2>Settings</h2>\n\n      <settings-component [settings]=\"settings\"\n          (settingsChanged)=\"updateFromSettings()\">\n      </settings-component>\n    </div>\n  </material-tab>\n  <material-tab label=\"Help\">\n    <help-component content=\"help\"></help-component>\n  </material-tab>\n  <material-tab label=\"About\">\n    <help-component content=\"about\"></help-component>\n  </material-tab>\n</material-tab-panel>",
+        "templateUrl": "asset:components_codelab/lib/lottery_simulator.html",
+        "styles": [],
+        "styleUrls": [
+          "asset:components_codelab/lib/lottery_simulator.css"
+        ],
+        "ngContentSelectors": []
+      },
+      "providers": [
+        {
+          "class": "Identifier",
+          "name": "materialProviders",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        },
+        {
+          "class": "Identifier",
+          "name": "Settings",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        }
+      ],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": [
+        {
+          "selectors": [
+            {
+              "value": "vis",
+              "identifier": null,
+              "identifierIsInstance": false
+            }
+          ],
+          "descendants": true,
+          "first": true,
+          "propertyName": "vis",
+          "read": null
+        }
+      ]
+    }
+  },
+  "alias": {}
+}

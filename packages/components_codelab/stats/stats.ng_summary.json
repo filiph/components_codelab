@@ -1,0 +1,70 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/common/directives.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "StatsComponent",
+        "7": [
+          {
+            "2": "NgFor"
+          },
+          {
+            "2": "NgIf"
+          }
+        ]
+      }
+    ],
+    "6": "stats.dart"
+  },
+  "type": {
+    "StatsComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "stats-component",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "StatsComponent",
+        "moduleUrl": "asset:components_codelab/lib/stats/stats.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "winningsMap": "winningsMap"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 0,
+        "template": "<ul>\n  <li *ngIf=\"winningsMap.isEmpty\">\n    (no stats yet)\n  </li>\n  <li *ngFor=\"let key of winningsMap.keys\">\n    <span *ngIf=\"key == 0\">\n      Lost &mdash;\n      {{ winningsMap[key] }} time{{ winningsMap[key] > 1 ? 's' : '' }}.\n    </span>\n    <span *ngIf=\"key > 0\">\n      Won ${{ key }} &mdash;\n      {{ winningsMap[key] }} time{{ winningsMap[key] > 1 ? 's' : '' }}.\n    </span>\n  </li>\n</ul>",
+        "templateUrl": "asset:components_codelab/lib/stats/stats.html",
+        "styles": [],
+        "styleUrls": [
+          "asset:components_codelab/lib/stats/stats.css"
+        ],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

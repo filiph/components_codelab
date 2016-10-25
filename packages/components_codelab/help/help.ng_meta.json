@@ -1,0 +1,94 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/common/directives.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2_components/angular2_components.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "HelpComponent",
+        "7": [
+          {
+            "2": "materialDirectives"
+          },
+          {
+            "2": "NgSwitch"
+          },
+          {
+            "2": "NgSwitchWhen"
+          },
+          {
+            "2": "NgSwitchDefault"
+          }
+        ]
+      }
+    ],
+    "6": "help.dart",
+    "7": [
+      {
+        "1": "package:angular2/core.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/common/directives.template.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2_components/angular2_components.template.dart",
+        "4": "i2"
+      }
+    ]
+  },
+  "type": {
+    "HelpComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "help-component",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "HelpComponent",
+        "moduleUrl": "asset:components_codelab/lib/help/help.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "content": "content"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 0,
+        "template": "<div class=\"help\" [ngSwitch]=\"content\">\n  <div *ngSwitchWhen=\"'help'\">\n    <p>\n      It's hard to explain what a spectacularly bad idea it is to bet in a lottery.\n      You have a better chance of being struck by lightning—twice—than winning the\n      Powerball lottery. But that doesn't stop people from trying.\n    </p>\n\n    <p>\n      Our approach is to let people see the results of betting on the lottery,\n      versus saving their disposable income.\n      It all happens much more quickly than in real life,\n      and you won't lose a cent.\n    </p>\n\n    <p>\n      Here's how the simulation works:\n    </p>\n\n    <ul>\n      <li> Each \"day\" has two phases. First you earn your disposable income ($2, by default).\n        Then you bet, immediately getting the results. </li>\n      <li> You can choose different <b>betting strategies</b> and even different <b>lotteries</b>.\n        We only simulate one <em>real</em> lottery, at the moment, but even the mythical\n        fair lottery is interesting. </li>\n      <li> You can also choose the <b>length of time</b> to simulate and the <b>interest rate</b>\n        for your invested money.</li>\n      <li> <b>Everything is completely random.</b>\n        It's perfectly possible for you to win the jackpot here,\n        but it's just as unlikely to happen as it is in real life. </li>\n    </ul>\n\n\n    <h2> Tips </h2>\n\n    <dl>\n      <dt> Simulation running too slowly? </dt>\n      <dd> Toggle <b>Go faster</b>. </dd>\n\n      <dt> Simulation running too quickly? </dt>\n      <dd> Click the Pause button:\n        <glyph icon=\"pause\" aria-label=\"image from the Pause button\"></glyph><br>\n        Then click the Step button to advance one phase (half a day):\n        <glyph icon=\"skip_next\" aria-label=\"image from the Step button\"></glyph> </dd>\n\n      <dt> Want to start all over? </dt>\n      <dd> Click the Reset button:\n        <glyph icon=\"replay\" aria-label=\"image from the Reset button\"></glyph> </dd>\n    </dl>\n  </div>\n\n  <div *ngSwitchWhen=\"'about'\">\n\n    <img src=\"img/cartoon.jpeg\" align=\"right\" height=\"300px\"\n         alt=\"Cartoon guy presents a lottery machine ejecting powerballs\">\n\n    <p>\n    Two facets of this app might interest you:\n    </p>\n\n    <ul>\n      <li> How the lottery results are calculated </li>\n      <li> How this app was coded </li>\n    </ul>\n\n    <h2> How the lottery results are calculated </h2>\n    <p>\n      This app uses simple probabilities from sources such as the\n      <a href=\"http://www.powerball.com/powerball/pb_prizes.asp\">Powerball site</a>\n      to draw tickets. You can go much deeper using\n      <a href=\"https://en.wikipedia.org/wiki/Lottery_mathematics\">lottery mathematics</a>.\n    </p>\n   \n    <h2> How this app was coded </h2>\n\n    <p>\n      <a href=\"https://github.com/filiph\">Filip</a>\n      wrote this app to accompany a code lab demonstrating\n      how to use an early release of AngularDart Components.\n      More information:\n    </p>\n\n    <dl>\n      <dt> <a href=\"http://www.dartlang.org\">www.dartlang.org</a> </dt>\n      <dd> The Dart language and libraries. </dd>\n\n      <dt> <a href=\"http://webdev.dartlang.org\">webdev.dartlang.org</a> </dt>\n      <dd> How to write web apps with Dart. Includes\n           <a href=\"https://webdev.dartlang.org/codelabs\">code\n\t       labs</a>—step-by-step introductions to writing Dart code for the web.\n      </dd>\n\n      <dt> <a href=\"http://angulardart.org\">angulardart.org</a> </dt>\n      <dd> Detailed documentation for using AngularDart. </dd>\n    </dl>\n\n  </div>\n\n  <div *ngSwitchDefault> Uh oh. You've found a bug. No content available for {{content}}. </div>\n\n</div>\n",
+        "templateUrl": "asset:components_codelab/lib/help/help.html",
+        "styles": [],
+        "styleUrls": [
+          "asset:components_codelab/lib/help/help.css"
+        ],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

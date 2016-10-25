@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "Color": {
+      "class": "Identifier",
+      "name": "Color",
+      "moduleUrl": "asset:angular2_components/lib/src/utils/color/color.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}
