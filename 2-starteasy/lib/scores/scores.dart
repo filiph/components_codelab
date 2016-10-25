@@ -10,7 +10,7 @@ import 'package:angular2_components/angular2_components.dart';
   styleUrls: const ['scores.css'],
   templateUrl: 'scores.html',
   directives: const [ScorecardComponent],
-  providers: const [materialBindings],
+  providers: const [materialProviders],
 )
 class ScoresComponent {
   /// The state of cash the person would have if they saved instead of betting.

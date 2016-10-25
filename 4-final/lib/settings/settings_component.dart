@@ -20,7 +20,7 @@ import 'package:components_codelab/settings/settings.dart';
     MaterialRadioGroupComponent,
     NgFor
   ],
-  providers: const [materialBindings],
+  providers: const [materialProviders],
 )
 class SettingsComponent implements OnInit {
   final initialCashOptions = [0, 10, 100, 1000];
